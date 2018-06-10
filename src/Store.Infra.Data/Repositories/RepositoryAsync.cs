@@ -1,7 +1,7 @@
-﻿using Domain.Shared;
-using Domain.Shared.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Store.Domain.Repositories;
+using Store.DomainShared;
+using Store.DomainShared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.Shared
+namespace Store.DomainShared
 {
     public struct PagingResult<T>
     {

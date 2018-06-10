@@ -1,4 +1,4 @@
-﻿namespace Domain.Shared.ValueObjects
+﻿namespace Store.DomainShared.ValueObjects
 {
     public class Email
     {
