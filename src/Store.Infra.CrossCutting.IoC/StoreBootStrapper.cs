@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Domain.Repositories;
+using Store.Domain.UoW;
 using Store.Infra.Data.Repositories;
+using Store.Infra.Data.UoW;
 
 namespace Store.Infra.CrossCutting.IoC
 {
@@ -13,6 +15,7 @@ namespace Store.Infra.CrossCutting.IoC
             services.AddDbContext<StoreContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("StoreConnection")));
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<ICustomersRepository, CustomersRepository>();
         }

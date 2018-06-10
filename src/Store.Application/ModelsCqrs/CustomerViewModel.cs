@@ -1,7 +1,7 @@
-﻿using System;
-using AutoMapper;
-using Store.Application.Automapper;
+﻿using AutoMapper;
 using Store.Domain.Entities;
+using System;
+using Store.Application.Automapper;
 
 namespace Store.Application.ModelsCqrs
 {
@@ -10,6 +10,7 @@ namespace Store.Application.ModelsCqrs
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Customer, CustomerViewModel>()

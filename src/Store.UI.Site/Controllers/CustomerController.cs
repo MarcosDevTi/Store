@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Store.Application.ModelsCqrs;
+using Store.Application.ModelsCqrs.Commands;
 using System;
 using System.Threading.Tasks;
-using Store.Application.ModelsCqrs;
 
 namespace Store.UI.Site.Controllers
 {
@@ -22,7 +23,37 @@ namespace Store.UI.Site.Controllers
 
         public async Task<IActionResult> Details(Guid id)
         {
-            return View(await _mediator.Send(new GetCustomerById(id)));
+            return View(await _mediator.Send(new GetCustomerDetailsById(id)));
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CustomerCreate customerViewModel)
+        {
+            await _mediator.Send(customerViewModel);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            if (!id.HasValue) return NotFound();
+            var customerV = await _mediator.Send(new GetCustomerDetailsById(id.Value));
+
+            if (customerV == null) return NotFound();
+            return View(customerV);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            await _mediator.Send(new RemoveCustomer(id));
+            return RedirectToAction("Index");
         }
     }
 }
