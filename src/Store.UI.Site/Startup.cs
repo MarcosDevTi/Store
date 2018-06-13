@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Store.Application.Automapper;
+using Store.Application.Services;
 using Store.Infra.CrossCutting.IoC;
 
 namespace Store.UI.Site
@@ -21,6 +22,10 @@ namespace Store.UI.Site
         {
             AutoMapperConfig.Configure();
             services.AddMediatR();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(Timer<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(Logging<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(Timer<,>));
+           
 
             StoreBootStrapper.RegisterServices(services, Configuration);
 

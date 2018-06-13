@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Store.Domain.Entities;
+using Store.DomainShared.FinalValues;
 
 namespace Store.Infra.Data.Maps
 {
@@ -13,11 +14,11 @@ namespace Store.Infra.Data.Maps
                 {
                     cb.Property(c => c.FirstName)
                         .HasColumnName("FirstName")
-                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(CustomerConsts.FirstNameMaxLength)
                         .IsRequired();
                     cb.Property(c => c.LastName)
                         .HasColumnName("LastName")
-                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(CustomerConsts.LastNameMaxLength)
                         .IsRequired();
                 });
 
@@ -26,7 +27,7 @@ namespace Store.Infra.Data.Maps
                 {
                     cb.Property(c => c.AddressEmail)
                         .HasColumnName("Email")
-                        .HasColumnType("varchar(120)")
+                        .HasMaxLength(CustomerConsts.EmailMaxLength)
                         .IsRequired();
                 });
 
@@ -35,19 +36,19 @@ namespace Store.Infra.Data.Maps
                 {
                     cb.Property(c => c.City)
                         .HasColumnName("City")
-                        .HasColumnType("varchar(50)")
+                        .HasMaxLength(CustomerConsts.CityMaxLength)
                         .IsRequired();
                     cb.Property(c => c.Number)
                         .HasColumnName("Number")
-                        .HasColumnType("varchar(20)")
+                        .HasMaxLength(CustomerConsts.NumberMaxLength)
                         .IsRequired();
                     cb.Property(c => c.Street)
                         .HasColumnName("Street")
-                        .HasColumnType("varchar(80)")
+                        .HasMaxLength(CustomerConsts.StreetMaxLength)
                         .IsRequired();
                     cb.Property(c => c.ZipCode)
                         .HasColumnName("ZipCode")
-                        .HasColumnType("varchar(30)")
+                        .HasMaxLength(CustomerConsts.ZipCodeMaxLength)
                         .IsRequired();
                 });
         }

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Store.Application.ModelsCqrs;
 using Store.Application.ModelsCqrs.Commands;
+using Store.Domain.Entities;
 using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Store.UI.Site.Controllers
@@ -16,9 +18,32 @@ namespace Store.UI.Site.Controllers
             _mediator = mediator;
         }
 
-        public async Task<IActionResult> Index()
+        //[ResponseCache(Location = ResponseCacheLocation.Client, Duration = 60)]
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? page
+            )
         {
-            return View(await _mediator.Send(new GetAllCustomers()));
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            Expression<Func<Customer, bool>> predicate = x => x.Name.FirstName.Contains(searchString ?? "");
+
+            return View(await _mediator.Send(new GetAllCustomers(sortOrder, predicate)));
         }
 
         public async Task<IActionResult> Details(Guid id)
@@ -33,7 +58,7 @@ namespace Store.UI.Site.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CustomerCreate customerViewModel)
+        public async Task<IActionResult> Create(RegisterNewCustomer customerViewModel)
         {
             await _mediator.Send(customerViewModel);
             return RedirectToAction("Index");

@@ -3,6 +3,7 @@ using MediatR;
 using Store.Application.ModelsCqrs;
 using Store.Domain.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,9 +22,9 @@ namespace Store.Application.Handlers
         }
         public async Task<IReadOnlyList<CustomerViewModel>> Handle(GetAllCustomers request, CancellationToken cancellationToken)
         {
-            return await Mapper.Map<Task<IReadOnlyList<CustomerViewModel>>>(_customersRepository.GetAllAsync());
+            return await Mapper.Map<Task<IReadOnlyList<CustomerViewModel>>>(_customersRepository.GetAllAsync(request.SortOrder, request.Predicate));
         }
-
+        
         public async Task<CustomerViewModel> Handle(GetCustomerDetailsById request, CancellationToken cancellationToken)
         {
             return await Mapper.Map<Task<CustomerViewModel>>(_customersRepository.GetByIdAsync(request.Id));

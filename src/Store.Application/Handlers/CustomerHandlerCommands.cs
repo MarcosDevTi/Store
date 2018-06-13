@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Store.Application.Handlers
 {
     public class CustomerHandlerCommands : CommandHandler,
-        IRequestHandler<CustomerCreate>,
+        IRequestHandler<RegisterNewCustomer>,
         IRequestHandler<RemoveCustomer>
     {
         private readonly ICustomersRepository _customersRepository;
@@ -20,7 +20,7 @@ namespace Store.Application.Handlers
             _customersRepository = customersRepository;
         }
 
-        public Task<Unit> Handle(CustomerCreate request, CancellationToken cancellationToken)
+        public Task<Unit> Handle(RegisterNewCustomer request, CancellationToken cancellationToken)
         {
             _customersRepository.AddAsync(Mapper.Map<Customer>(request));
             Commit();

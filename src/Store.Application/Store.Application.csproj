@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.0" />
+    <PackageReference Include="FluentValidation" Version="7.6.100" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,6 +16,9 @@
   <ItemGroup>
     <Reference Include="MediatR">
       <HintPath>..\..\..\..\Users\marco\.nuget\packages\mediatr\5.0.1\lib\netstandard2.0\MediatR.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\Users\marco\.nuget\packages\microsoft.entityframeworkcore\2.1.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 

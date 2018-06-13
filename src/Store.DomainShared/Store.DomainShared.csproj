@@ -8,6 +8,12 @@
     <Reference Include="AutoMapper">
       <HintPath>..\..\..\..\Users\marco\.nuget\packages\automapper\7.0.0\lib\netstandard2.0\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\..\..\Users\marco\.nuget\packages\fluentvalidation\7.6.100\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="MediatR">
+      <HintPath>..\..\..\..\Users\marco\.nuget\packages\mediatr\5.0.1\lib\netstandard2.0\MediatR.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

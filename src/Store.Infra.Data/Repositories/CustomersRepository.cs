@@ -3,6 +3,9 @@ using Store.Domain.Entities;
 using Store.Domain.Repositories;
 using Store.Domain.UoW;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Store.Infra.Data.Repositories
@@ -22,6 +25,13 @@ namespace Store.Infra.Data.Repositories
             return await DbSet.SingleOrDefaultAsync(c => c.Email.AddressEmail == email);
         }
 
+        public async Task<IReadOnlyList<Customer>> GetAllAsync(string order, Expression<Func<Customer, bool>> predicate)
+        {
+
+            return await Task.Run(() => DbSet.Where(predicate).ToList());
+        }
+
+       
         public Task AddAsync(Customer customer)
         {
             DbSet.AddAsync(customer);
