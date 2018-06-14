@@ -3,17 +3,18 @@ using Microsoft.AspNetCore.Mvc;
 using Store.Application.ModelsCqrs;
 using Store.Application.ModelsCqrs.Commands;
 using Store.Domain.Entities;
+using Store.DomainShared.Notifications;
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Store.UI.Site.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : BaseController
     {
         private readonly IMediator _mediator;
 
-        public CustomerController(IMediator mediator)
+        public CustomerController(IMediator mediator, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             _mediator = mediator;
         }
@@ -60,7 +61,12 @@ namespace Store.UI.Site.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RegisterNewCustomer customerViewModel)
         {
+            if (!ModelState.IsValid) return View(customerViewModel);
             await _mediator.Send(customerViewModel);
+
+            if (IsValidOperation())
+                ViewBag.Sucesso = "Customer Registered!";
+
             return RedirectToAction("Index");
         }
 

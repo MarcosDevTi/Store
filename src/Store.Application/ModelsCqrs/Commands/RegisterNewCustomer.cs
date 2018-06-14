@@ -11,7 +11,7 @@ namespace Store.Application.ModelsCqrs.Commands
         {
             configuration.CreateMap<RegisterNewCustomer, Customer>()
 
-                .ConstructProjectionUsing(src => new Customer()
+                .ConstructProjectionUsing(src => new Customer(src.BirthDate)
                     .SetName(src.FirstName, src.LastName)
                     .SetAddress(src.Street, src.Number, src.ZipCode, src.City)
                     .SetEmail(src.AddressEmail)

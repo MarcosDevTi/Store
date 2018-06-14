@@ -1,15 +1,21 @@
 ﻿using AutoMapper;
+using Store.Application.Automapper;
 using Store.Domain.Entities;
 using System;
-using Store.Application.Automapper;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Store.Application.ModelsCqrs
 {
     public class CustomerViewModel : ICustomMappings
     {
         public Guid Id { get; set; }
+        [DisplayName("Name")]
         public string Name { get; set; }
         public string Address { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayName("Birth Date")]
+        public DateTime BirthDate { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
