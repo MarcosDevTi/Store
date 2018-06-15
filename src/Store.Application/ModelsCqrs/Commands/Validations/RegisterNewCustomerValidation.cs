@@ -7,6 +7,7 @@
             ValidateFirstName();
             ValidateLastName();
             ValidateEmail();
+            ValidateBirthDate();
         }
     }
 }

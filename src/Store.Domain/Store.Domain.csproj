@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="7.6.102" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Store.DomainShared\Store.DomainShared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MediatR">
+      <HintPath>..\..\..\..\Users\marco\.nuget\packages\mediatr\5.0.1\lib\netstandard2.0\MediatR.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -1,21 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Store.Domain.Entities;
-using System.IO;
+using Store.DomainShared.Events;
 using Store.Infra.Data.Maps;
+using System.IO;
 
-namespace Store.Infra.Data.Repositories
+namespace Store.Infra.Data.Context
 {
-    public class StoreContext : DbContext
+    public class EventStoreSqlContext : DbContext
     {
-        public StoreContext(DbContextOptions<StoreContext> options)
-            : base(options)
-        { }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<StoredEvent> StoredEvent { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new CustomerMap());
+            modelBuilder.ApplyConfiguration(new StoredEventMap());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.UI.Site", "src\Store.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Infra.CrossCutting.IoC", "src\Store.Infra.CrossCutting.IoC\Store.Infra.CrossCutting.IoC.csproj", "{BAC4C672-D2DD-426A-9803-FFF138CF5CDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Infra.CrossCutting.Bus", "src\Store.Infra.CrossCutting.Bus\Store.Infra.CrossCutting.Bus.csproj", "{37E41AAB-9452-4B33-ACB8-3517DA238B72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Infra.CrossCutting.Bus", "src\Store.Infra.CrossCutting.Bus\Store.Infra.CrossCutting.Bus.csproj", "{37E41AAB-9452-4B33-ACB8-3517DA238B72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

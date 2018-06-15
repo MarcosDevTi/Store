@@ -5,10 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Store.Application\Store.Application.csproj" />
+    <ProjectReference Include="..\Store.Infra.CrossCutting.Bus\Store.Infra.CrossCutting.Bus.csproj" />
     <ProjectReference Include="..\Store.Infra.Data\Store.Infra.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="MediatR">
+      <HintPath>..\..\..\..\Users\marco\.nuget\packages\mediatr\5.0.1\lib\netstandard2.0\MediatR.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
       <HintPath>..\..\..\..\Users\marco\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>

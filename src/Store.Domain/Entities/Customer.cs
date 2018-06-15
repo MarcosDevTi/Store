@@ -40,5 +40,8 @@ namespace Store.Domain.Entities
             Active = value;
             return this;
         }
+
+
+
     }
 }

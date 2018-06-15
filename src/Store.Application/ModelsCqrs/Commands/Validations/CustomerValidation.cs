@@ -29,6 +29,14 @@ namespace Store.Application.ModelsCqrs.Commands.Validations
                 .MaximumLength(CustomerConsts.EmailMaxLength)
                 .EmailAddress();
         }
+
+        protected void ValidateBirthDate()
+        {
+            RuleFor(c => c.BirthDate)
+                .NotEmpty()
+                .Must(HaveMinimumAge)
+                .WithMessage("The customer must have 18 years or more");
+        }
         protected void ValidateId()
         {
             RuleFor(c => c.Id)

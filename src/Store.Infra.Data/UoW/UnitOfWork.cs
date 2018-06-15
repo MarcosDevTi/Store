@@ -1,4 +1,5 @@
 ﻿using Store.Domain.UoW;
+using Store.Infra.Data.Context;
 using Store.Infra.Data.Repositories;
 
 namespace Store.Infra.Data.UoW
